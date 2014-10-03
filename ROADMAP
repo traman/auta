@@ -1,0 +1,20 @@
+BETA-CRITICAL FEATURES:
+- Insert a new trip into the database
+- Display trip details
+	-name, address, organizer's phone, date and time
+- Add a person into the trip
+	-Name, preffered departure time, takes car - yes, if necessary, no
+- Add car details
+	-color, capacity, meeting point
+- Automatically distribute people into cars
+	-First fill up "yes" cars, then if necessary: 1st by capacity, 2nd by departure time
+	-Each going car should have the same number of empty seats
+
+NICE TO HAVE
+- Maps integration - trip goal, meeting points
+- Allow passengers to reserve a seat in their preffered car
+- Nice CSS
+
+WIDE RELEASE FEATURES
+- good security
+- SMS notifications

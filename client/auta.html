@@ -1,0 +1,31 @@
+<head>
+  <title>auta</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+  {{> newtrip}}
+</body>
+
+<template name="newtrip">
+  {{#unless ShowTripForm}}<button class="newtrip">New trip</button>{{/unless}}
+  {{#if ShowTripForm}}
+    {{> tripform}}
+  {{/if}}
+</template>
+
+<template name="tripform">
+Název výjezdu
+<input type="text">
+Datum a čas
+  <div class="input-group datetimepicker">
+    <input class="set-due-date form-control" type="text"/>
+    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+    <button class="save trip">Save</button>
+    <button class="cancel trip">Cancel</button>
+  </div>
+</template>
+
+<template name="intro">
+lelelel
+</template>

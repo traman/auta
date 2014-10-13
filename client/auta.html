@@ -3,15 +3,49 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-  {{> newtrip}}
 </body>
 
+<template name="intro">
+  <h1>Welcome to Meteor!</h1>
+  {{#if url}}
+	This trip's URL is: {{url}}
+  {{/if}}
+  {{> newtrip}}
+</template>
 <template name="newtrip">
   {{#unless ShowTripForm}}<button class="newtrip">New trip</button>{{/unless}}
   {{#if ShowTripForm}}
     {{> tripform}}
   {{/if}}
+</template>
+
+<template name="trip">
+Trip name: {{tripname}}
+Destination: {{dest}}
+Date and time: {{datetime}}
+{{>join}}
+</template>
+
+<template name="join">
+{{#if joinForm}}
+<input type="text" id="personName">
+<input type="checkbox" id="beruauto">
+{{#if autoberu}}
+{{>carform}}
+{{/if}}
+<button class="save">Save</button>
+<button class="cancel">cancel</button>
+{{else}}
+<button class="joinbutton">Join trip</button>
+{{/if}}
+</template>
+
+<template name="carform">
+<input type="number" id="capacity">
+Místo srazu:
+<textarea>
+
+</textarea>
 </template>
 
 <template name="tripform">
@@ -21,11 +55,7 @@ Datum a čas
   <div class="input-group datetimepicker">
     <input class="set-due-date form-control" id="tripdatetime" type="text"/>
     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-    <button class="save trip">Save</button>
-    <button class="cancel trip">Cancel</button>
+    <button class="save">Save</button>
+    <button class="cancel">Cancel</button>
   </div>
-</template>
-
-<template name="intro">
-lelelel
 </template>

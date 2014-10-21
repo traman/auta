@@ -28,11 +28,17 @@ Date and time: {{datetime}}
 
 <template name="join">
 {{#if joinForm}}
-<input type="text" id="personName">
-<input type="checkbox" id="beruauto">
+
+Jméno:<input type="text" id="personName" class="form-control">
+Můžu vzít auto:<input type="checkbox" id="beruauto" class="form-control">
 {{#if autoberu}}
 {{>carform}}
 {{/if}}
+Datum a čas:
+<div class="input-group datetimepicker">
+    <input class="set-due-date form-control" id="persondatetime" type="text"/>
+    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+</div> 
 <button class="save">Save</button>
 <button class="cancel">cancel</button>
 {{else}}

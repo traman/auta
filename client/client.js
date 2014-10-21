@@ -8,9 +8,10 @@ Template.newtrip.events({
 
 Template.join.events({
 'click .joinbutton' : function() {Session.set("joinForm", true)},
-'click .save' : function() {
-	var name=template.find("personName");
-	Meteor.call("join",{name: name});
+'click .save' : function(event,template) {
+	var name=template.find("#personName").value;
+	var time=template.find("#persondatetime").value;
+	Meteor.call("join",{id:Session.get("id"),name: name, time:time});
 },
 'change #beruauto' : function() {console.log("autoberu"); Session.set("autoberu", Template.instance().find("#beruauto").checked)}
 }
@@ -30,7 +31,7 @@ Template.newtrip.ShowTripForm = function () { return Session.get("ShowTripForm")
 Template.registerHelper("url", function () { return Session.get("url")});
 Template.registerHelper("joinForm", function () {return Session.get("joinForm")});
 Template.registerHelper("autoberu", function () {return Session.get("autoberu")});
-Template.tripform.rendered = function () {
+Template.tripform.rendered = Template.join.rendered = function () {
 	$('.datetimepicker').datetimepicker({
 		language: "cs"
 	});

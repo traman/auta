@@ -5,6 +5,7 @@ Router.map(function () {
 		path: '/trip/:id',
 		data: function () {
 			_id = this.params.id;
+			Session.set("id",_id);
 			templateData = Trips.findOne(_id);
 			return templateData;
 		}

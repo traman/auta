@@ -1,14 +1,13 @@
-<head>
-  <title>auta</title>
+<head>  
+<title>auta</title>
 </head>
 
 <body>
 </body>
 
 <template name="intro">
-  <h1>Welcome to Meteor!</h1>
   {{#if url}}
-	This trip's URL is: {{url}}
+	This trip's URL is: <a href="/trip/{{url}}">127.0.0.1:300/trip/{{url}}</a>
   {{/if}}
   {{> newtrip}}
 </template>
@@ -23,12 +22,16 @@
 Trip name: {{tripname}}
 Destination: {{dest}}
 Date and time: {{datetime}}
+{{#if joinForm}}
 {{>join}}
+{{else}}
+<button class="joinbutton">join</button>
+{{/if}}
 </template>
 
-<template name="join">
-{{#if joinForm}}
 
+
+<template name="join">
 Jméno:<input type="text" id="personName" class="form-control">
 Můžu vzít auto:<input type="checkbox" id="beruauto" class="form-control">
 {{#if autoberu}}
@@ -41,9 +44,6 @@ Datum a čas:
 </div> 
 <button class="save btn">Save</button>
 <button class="cancel btn">cancel</button>
-{{else}}
-<button class="joinbutton">Join trip</button>
-{{/if}}
 </template>
 
 <template name="carform">

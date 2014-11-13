@@ -5,9 +5,9 @@ Template.newtrip.events({
 'click .cancel' : function() {Session.set("ShowTripForm", false)},
 'click .save' : function() {saveTrip()}
 });
-
+Template.trip.events({
+'click .joinbutton' : function() {Session.set("joinForm", true)}});
 Template.join.events({
-'click .joinbutton' : function() {Session.set("joinForm", true)},
 'click .save' : function(event,template) {
 	var name=template.find("#personName").value;
 	var time=template.find("#persondatetime").value;
@@ -45,4 +45,5 @@ Template.tripform.rendered = Template.join.rendered = function () {
 	$('.datetimepicker').datetimepicker({
 		language: "cs"
 	});
+	Log( "kvák");
 }

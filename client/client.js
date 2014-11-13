@@ -11,7 +11,17 @@ Template.join.events({
 'click .save' : function(event,template) {
 	var name=template.find("#personName").value;
 	var time=template.find("#persondatetime").value;
-	Meteor.call("join",{id:Session.get("id"),name: name, time:time});
+	if(time!=""){
+		Meteor.call("join",{id:Session.get("id"),name: name, time:time});
+        }else Meteor.call("join",{id:Session.get("id"), name:name});
+	if(template.find("#beruauto").checked){
+		var capacity=template.find("#capacity").value;
+		var place=tempale.find("#place").value;
+		Meteor.call("addCar",{id:Session.get("id"),capacity: capacity, place: place});	
+	}
+},
+'click .cancel' : function(event,template) {
+Session.set("joinForm", false);
 },
 'change #beruauto' : function() {console.log("autoberu"); Session.set("autoberu", Template.instance().find("#beruauto").checked)}
 }

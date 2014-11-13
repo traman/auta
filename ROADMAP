@@ -1,11 +1,11 @@
 BETA-CRITICAL FEATURES:
-- Insert a new trip into the database
-- Display trip details
+- Insert a new trip into the database - DONE
+- Display trip details - DONE, except for phone number
 	-name, address, organizer's phone, date and time
-- Add a person into the trip
+- Add a person into the trip - DONE
 	-Name, preffered departure time, takes car - yes, if necessary, no
 - Add car details
-	-color, capacity, meeting point
+	-(color), capacity, meeting point
 - Automatically distribute people into cars
 	-First fill up "yes" cars, then if necessary: 1st by capacity, 2nd by departure time
 	-Each going car should have the same number of empty seats

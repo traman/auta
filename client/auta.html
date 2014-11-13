@@ -39,17 +39,19 @@ Datum a čas:
     <input class="set-due-date form-control" id="persondatetime" type="text"/>
     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 </div> 
-<button class="save">Save</button>
-<button class="cancel">cancel</button>
+<button class="save btn">Save</button>
+<button class="cancel btn">cancel</button>
 {{else}}
 <button class="joinbutton">Join trip</button>
 {{/if}}
 </template>
 
 <template name="carform">
-<input type="number" id="capacity">
+Kapacita:
+<input type="number" id="capacity" class="form-control">
 Místo srazu:
-<textarea>
+<textarea class="form-control" id="place">
+
 
 </textarea>
 </template>

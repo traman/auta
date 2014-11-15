@@ -34,8 +34,8 @@
 <template name="join">
 {{i18n "join.name"}}:<input type="text" id="personName" class="form-control">
 {{i18n "join.places"}}: <input type="text" id="places" class="form-control">
-{{i18n "join.takeCar"}}:<input type="checkbox" id="beruauto" class="form-control">
-{{#if autoberu}}
+{{i18n "join.takeCar"}}:<input type="checkbox" id="takecar" class="form-control">
+{{#if takecar}}
 {{>carform}}
 {{/if}}
 {{i18n "datetime"}}:

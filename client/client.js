@@ -17,8 +17,9 @@ Template.join.events({
 	if(time!=""){
         	data.time=time;
 	};
-	if(template.find("#beruauto").checked){
-		data.capacity=template.find("#capacity").value;
+	if(template.find("#takecar").checked){
+		data.takeCar = true;
+		data.capacity=parseInt(template.find("#capacity").value);
 		data.place=template.find("#place").value;
 	}
 	Meteor.call("join",data);
@@ -26,7 +27,7 @@ Template.join.events({
 'click .cancel' : function(event,template) {
 Session.set("joinForm", false);
 },
-'change #beruauto' : function() {console.log("autoberu"); Session.set("autoberu", Template.instance().find("#beruauto").checked)}
+'change #takecar' : function() { Session.set("takecar", Template.instance().find("#takecar").checked)}
 }
 )
 function saveTrip() {
@@ -43,7 +44,7 @@ function saveTrip() {
 Template.newtrip.ShowTripForm = function () { return Session.get("ShowTripForm") };
 Template.registerHelper("url", function () { return Session.get("url")});
 Template.registerHelper("joinForm", function () {return Session.get("joinForm")});
-Template.registerHelper("autoberu", function () {return Session.get("autoberu")});
+Template.registerHelper("takecar", function () {return Session.get("takecar")});
 Template.tripform.rendered = Template.join.rendered = function () {
 	$('.datetimepicker').datetimepicker({
 		language: "cs"

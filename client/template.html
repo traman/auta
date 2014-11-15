@@ -19,37 +19,38 @@
 </template>
 
 <template name="trip">
-Trip name: {{tripname}}
-Destination: {{dest}}
-Date and time: {{datetime}}
+{{i18n "trip.tripname"}}: {{tripname}} <br />
+{{i18n "trip.destination"}}: {{dest}}
+{{i18n "datetime"}}: {{datetime}}
 {{#if joinForm}}
 {{>join}}
 {{else}}
-<button class="joinbutton">join</button>
+<button class="joinbutton">{{i18n "trip.join"}}</button>
 {{/if}}
 </template>
 
 
 
 <template name="join">
-Jméno:<input type="text" id="personName" class="form-control">
-Můžu vzít auto:<input type="checkbox" id="beruauto" class="form-control">
+{{i18n "join.name"}}:<input type="text" id="personName" class="form-control">
+{{i18n "join.places"}}: <input type="text" id="places" class="form-control">
+{{i18n "join.takeCar"}}:<input type="checkbox" id="beruauto" class="form-control">
 {{#if autoberu}}
 {{>carform}}
 {{/if}}
-Datum a čas:
+{{i18n "datetime"}}:
 <div class="input-group datetimepicker">
     <input class="set-due-date form-control" id="persondatetime" type="text"/>
     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 </div> 
-<button class="save btn">Save</button>
-<button class="cancel btn">cancel</button>
+<button class="save btn">{{i18n "save"}}</button>
+<button class="cancel btn">{{i18n "cancel"}}</button>
 </template>
 
 <template name="carform">
-Kapacita:
+{{i18n "carform.capacity"}}:
 <input type="number" id="capacity" class="form-control">
-Místo srazu:
+{{i18n "carform.place"}}:
 <textarea class="form-control" id="place">
 
 
@@ -57,13 +58,13 @@ Místo srazu:
 </template>
 
 <template name="tripform">
-Název výjezdu
+{{i18n "trip.tripname"}}
 <input type="text" id="tripname">
-Datum a čas
+{{i18n "datetime"}}
   <div class="input-group datetimepicker">
     <input class="set-due-date form-control" id="tripdatetime" type="text"/>
     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-    <button class="save">Save</button>
-    <button class="cancel">Cancel</button>
+    <button class="save">{{i18n "save"}}</button>
+    <button class="cancel">{{i18n "cancel"}}</button>
   </div>
 </template>

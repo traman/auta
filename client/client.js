@@ -1,4 +1,6 @@
 Meteor.subscribe("trips");
+i18n.setLanguage("cs_CZ");
+i18n.showMissing(true);
 
 Template.newtrip.events({
 'click .newtrip' : function() {Session.set("ShowTripForm", true) ;console.log("blablabla")},
@@ -9,16 +11,17 @@ Template.trip.events({
 'click .joinbutton' : function() {Session.set("joinForm", true)}});
 Template.join.events({
 'click .save' : function(event,template) {
-	var name=template.find("#personName").value;
+	var data = {id:Session.get("id")};
+	data.name=template.find("#personName").value;
 	var time=template.find("#persondatetime").value;
 	if(time!=""){
-		Meteor.call("join",{id:Session.get("id"),name: name, time:time});
-        }else Meteor.call("join",{id:Session.get("id"), name:name});
+        	data.time=time;
+	};
 	if(template.find("#beruauto").checked){
-		var capacity=template.find("#capacity").value;
-		var place=tempale.find("#place").value;
-		Meteor.call("addCar",{id:Session.get("id"),capacity: capacity, place: place});	
+		data.capacity=template.find("#capacity").value;
+		data.place=template.find("#place").value;
 	}
+	Meteor.call("join",data);
 },
 'click .cancel' : function(event,template) {
 Session.set("joinForm", false);
@@ -45,5 +48,4 @@ Template.tripform.rendered = Template.join.rendered = function () {
 	$('.datetimepicker').datetimepicker({
 		language: "cs"
 	});
-	Log( "kvák");
 }

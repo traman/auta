@@ -19,6 +19,7 @@
 </template>
 
 <template name="trip">
+<div class="container-fluid">
 {{i18n "trip.tripname"}}: {{tripname}} <br />
 {{i18n "trip.destination"}}: {{dest}}
 {{i18n "datetime"}}: {{datetime}}
@@ -27,13 +28,35 @@
 {{else}}
 <button class="joinbutton">{{i18n "trip.join"}}</button>
 {{/if}}
+<div class="row">
+{{#each cars}}
+<div class="col-md-1 car {{active}}">
+{{#each passengers}}
+<p class="cell">{{name}}</p>
+{{/each}}
+</div>
+{{/each}}
+</div>
+<div class="row">
+<h3 class="col-md-12">{{i18n "trip.unplaced"}}</h3>
+</div>
+<div class="row">
+<div class="col-md-1">
+{{#each people}}
+<p class="cell">
+{{name}}
+</p>
+{{/each}}
+</div>
+</div>
+</div>
 </template>
 
 
 
 <template name="join">
 {{i18n "join.name"}}:<input type="text" id="personName" class="form-control">
-{{i18n "join.places"}}: <input type="text" id="places" class="form-control">
+{{i18n "join.places"}}: <input type="number" id="places" value="1" class="form-control">
 {{i18n "join.takeCar"}}:<input type="checkbox" id="takecar" class="form-control">
 {{#if takecar}}
 {{>carform}}

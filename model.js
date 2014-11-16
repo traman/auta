@@ -16,14 +16,15 @@ join:function(options) {
 		time: Match.Optional(ValidTime),
 		capacity: Match.Optional(Number),
 		place: Match.Optional(String),
-		takeCar: Match.Optional(Boolean)
+		takeCar: Match.Optional(Boolean),
+		places: Number
 	});
-	var personId=Persons.insert({name:options.name, time:options.time});	
+	var personId=Persons.insert({name:options.name, time:options.time, places: options.places});	
 	Trips.update(options.id,{$push: {people:personId}});
 	if(options.takeCar){
 		Meteor.call("addcar", {id: options.id, capacity: options.capacity, place:options.place, driver:personId});
 	}
-	findPlace(personId);
+	findPlace(options);
 },
 addcar:function(options) {
 	console.log(options.capacity);
@@ -32,8 +33,7 @@ addcar:function(options) {
 		capacity: Number,
 		place: String,
 		driver:NonEmptyString});
-	carId=Cars.insert({capacity: options.capacity, place:options.place, driver:options.driver, passenger:[], active:false});
+	carId=Cars.insert({capacity: options.capacity, place:options.place, driver:options.driver, passenger:[], active:"inactive"});
 	Trips.update(options.id,{$push: {cars:carId}});
-}
-
+},
 })

@@ -8,7 +8,8 @@ newtrip: {
 trip: {
 	tripname: "Název cesty",
 	destination: "Cíl",
-	join: "Přidat se"
+	join: "Přidat se",
+	unplaced: "Nezařazeni"
 },
 join: {
 	name: "Jméno",
